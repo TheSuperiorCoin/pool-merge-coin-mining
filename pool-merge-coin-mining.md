@@ -5,8 +5,8 @@ It works by mining only one blockchain but submitting the results to 2 blockchai
 The chain actually being mined is called the **parent (PRT) chain**, while the other chain is called the **auxillary (AUX) chain**. For the parent chain, there is almost no difference between a block mined the regular way and a block mined as part of a merged coin mining process. That's why there is no need to modify the code of the daemon of the parent blockchain. For the auxillary chain, a block mined the normal way (i.e a *regular block*) will be accepted with the original code. However, a block mined as a part of a merged coin mining process (i.e a *modified block*) will require a modification of the code of the AUX daemon.
 
 The key to understand double mining is that a *modified block* in the AUX chain will not look valid to a AUX daemon that only knows how to process regular blocks. To accept a modified block, the AUX daemon must rely on some API calls to the PRT chain. The AUX daemon needs to make sure that:
-1. the *modified block* contains a hash of a valid block on the PTX chain
-2. this PTX valid block itself contains a hash to the current  AUX block header 
+1. the *modified block* contains a hash of a valid block on the PRT chain
+2. this PRT valid block itself contains a hash to the current  AUX block header 
 
 # AUX Chain vs PRT Chain
 The below schema describes how a *modified block* on the AUX blockchan relates to its *parent block* on the PRT blockchain.
